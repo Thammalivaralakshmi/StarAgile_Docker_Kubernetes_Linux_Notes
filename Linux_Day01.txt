@@ -1,0 +1,193 @@
+Linux & Shell Scripting
+-------------------------------------------------
+
+Linux & Shell Scripting - 5 days (Before 2025)
+	Linux 			- 3 days
+	Shell Scripting 	- 2 days
+
+Linux & Shell Scripting - 3 days (From 2025)
+	Linux			- 3 days
+	Shell Scripting	- Recorded Videos (YouTube Playlist -----> 6 hours)
+https://youtube.com/playlist?list=PLs-PsDpuAuTeT2iRQpNs0sl-sXFD10I1C&si=Z3EyhbD3RY0a0Y0l
+https://github.com/KastroVKiran/ShellScriptingforDevOpsEngineering.git
+
+Batch 10: https://github.com/KastroVKiran/StarAgile_Batch10.git
+Batch 09: https://github.com/KastroVKiran/StarAgile_Batch09.git
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Linux
+==============
+=> What is an OS?
+OS is a software which is used to interact with the machines
+OS acts as a mediator between the user and the machine
+OS is mandatory to work with any device
+It provides an environment to run applications
+
+=> Types of OS?
+2 types of OS;
+Windows
+MacOS
+Andriod
+Linux
+Ubuntu
+....
+
+=> Windows Vs Linux
+Windows is a single user based OS
+Linux is multi-user based OS
+
+Windows OS is premium
+Linux OS is free and open-source
+
+Windows OS is less secure
+Linux OS is highly secure
+
+Windows OS is developed and owned by Microsoft organization
+Linux OS is developed by Linus Torvalds
+
+Windows OS is recommended for personal use
+Linux OS is purely meant for professional use
+
+Windows OS is GUI (Graphical User Interface) based
+Linux OS is CLI (Command Line Interface) based
+
+100 Commands ---- tell me some important commands
+
+=> Linux Distributions
+Biryani  -----> Hyderabad
+Chennai/Bangalore ----> Hyderabad Biryani shop
+
+Linux
+
+On top of Linux OS, cloud vendors has modified the original code of the Linux and then they called it as Amazon Linux -----> Linux Distributions
+
+Two types of Linux Distributions;
+	1. RPM based - RedHat Package Manager
+		AMIs -----> Amazon Linux, CentOS, redhat......
+	2. Debian based
+		AMIs ----> Ubuntu 24.04, 22.03, Suse...
+
+=> Working with Linux OS
+		AWS -----> EC2 -----> Amazon Linux 2023 -----> PublicIP Address -----> MobaXTerm (.pem) -----> All commands will be executed
+
+=> Linux Commands - Part 1 - Basics
+
+Note: All servers in AWS Cloud will follow UTC (Universal Coordinate Time) time-zone
+
+date
+cal (or) cal -1
+cal 2026
+cal january 2026
+clear (or) control + l
+pwd
+cat /etc/os-release
+
+Types of users in Linux;
+2 types of users;
+	1. ec2-user	-----> ec2-user has less permissions such as to install packages, to create users....
+	2. root		-----> root user has all kinds of permissions
+
+Can we create custom users?
+YES
+
+whoami
+sudo su
+exit (or) control + d
+
+			pwd
+ec2-user ---------------------> /home/ec2-user	-----> $ symbol in the end
+
+			pwd
+sudo su ----------------------> /home/ec2-user	-----> # symbol in the end
+
+			pwd	
+sudo -i -----------------------> /root				-----> # symbol in the end 
+
+history
+history -c
+man pwd
+whoami --help
+
+sudo yum install bc -y
+bc
+Perform any mathematical operation
+
+which ls
+which git
+which mvn
+
+Default directory structure of Linux;
+cd /
+ls
+You will see the Linux directory structure
+
+ls
+
+=> Creating Directories in Linux
+What is a directory?
+Directory is nothing but a folder in Linux 
+
+mkdir kastro
+mkdir folder1 folder2 folder3
+cd folder1
+
+Relative Path & Absolute Path
+Absolute Path --- it means we should give the complete path in a single command (cd ec2-user/folder1/folder1.1/folder1.2/folder1.3/folder1.4/)
+Relative Path --- it means we need to inside one specific directory at a time (cd ec2-user, cd folder1, cd folder1.1, cd folder1.2, cd folder1.3, cd folder1.4)
+
+cd -	-----> It will take to the previously worked location
+cd ~ -----> It will take to /home/ec2-user
+
+Nested Directories;
+mkdir -p linux_day01/aws/ec2/ebs/elb/asg
+
+rmdir folder2
+rmdir folder3 kastro kiran
+
+rm -rf folder1.2
+
+What is inode (Index Node)?
+ls -i
+ls -lrthi
+find . -inum 50729448
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
