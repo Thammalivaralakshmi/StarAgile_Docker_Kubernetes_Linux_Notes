@@ -1,0 +1,229 @@
+Linux & Shell Scripting
+==================
+Linux_Part 3
+==================
+GREP
+
+    5  grep -i "kafkaconsumer" errorlog.txt
+    6  grep -in "kafkaconsumer" errorlog.txt
+    7  grep -in "kafkaconsumer" errorlog.txt
+    8  grep -v "kafkaconsumer" errorlog.txt
+    9  grep -ic "kafkaconsumer" errorlog.txt
+   10  cat errorlog.txt
+   11  grep -inA5 "kafka" errorlog.txt
+   12  grep -inB2 "kafka" errorlog.txt
+   13  grep -inB1 "kafka" errorlog.txt
+   14  grep -inC1 "kafka" errorlog.txt
+   15  grep -inC5 "kafka" errorlog.txt
+   16  cat errorlog.txt
+   17  grep -iE "java|redis|kafka" errorlog.txt
+   18  grep -inE "java|redis|kafka" errorlog.txt
+
+SED - Stream Editor
+SED is used to process the data
+SED is used in four different ways;
+s	- substitute
+d	- delete
+p	- print
+i	- insert
+
+User Management in Linux
+All the users in Linux will be created in /home path
+Every user that we create in Linux will have a home directory
+
+sudo su
+    2  touch kastro.txt
+    3  ll
+    4  id kastro
+    5  id kiran
+    6  sudo groupadd devops
+    7  id devops
+    8  cat /etc/group
+    9  sudo useradd linux
+   10  id linux
+   11  id kastro
+   12  id kiran
+   13  sudo usermod -aG devops kastro
+   14  id kastro
+   15  sudo usermod -aG devops kiran
+   16  id kiran
+   17  sudo gpasswd -d kiran devops
+   18  id kiran
+   19  sudo lid -g devops
+   20  sudo userdel kiran
+   21  id kiran
+   22  sudo userdel devops
+   23  sudo groupdel devops
+   24  sudo groupadd devops
+   25  cat /etc/group
+   26  sudo groupmod -n devops-team devops
+   27  cat /etc/group
+   28  id kastro
+   29  sudo usermod -l kastrokiran kastro
+   30  id kastro
+   31  id kastrokiran
+   32  id kiran
+
+cat /etc/sudoers
+   47  id kastrokiran '
+   48  id kastrokiran
+   49  sudo visudo
+   50  su - kastrokiran
+
+CHOWN
+  46  chown ec2-user errorlog.txt
+   47  ll
+   48  chown :kastro kastro.txt
+   49  ll
+   50  chown kastrokiran:kastro kastro.txt
+   51  ll
+   52  whoami
+   53  vi kastro.txt
+   54  cat kastro.txt
+   55  exit
+   56  whoami
+   57  cat /etc/sudoers
+   58  id kastrokiran '
+   59  id kastrokiran
+   60  sudo visudo
+   61  su - kastrokiran
+   62  ll
+   63  history
+   64  ll
+   65  chown root kastro.txt
+
+
+Package Managers;
+Package means a software
+Package managers are used to manage software packages
+	Amazon Linux	- yum (Yellowdog updater manager)
+	Ubuntu			- apt
+
+
+sudo apt install maven -y
+    7  sudo yum install maven -y
+    8  whereis git
+    9  whereis maven
+
+Systemctl
+systemctl is used to manage services in Linux machines
+
+start a service
+stop a service
+restart a service
+reload a service
+status a service
+
+Hostname
+sudo hostname robo
+   72  exit
+   73  sudo vi /etc/hostname
+
+Networking commands
+ping - to check the connectivity
+wget - to download files from internet
+curl - it is used to send the http request to the url
+ifconfig
+
+Transfer the files from local to VM
+Pre-requisite: VM with .ppk file
+
+WinSCP
+
+==================
+Shell Scripting
+==================
+pwd
+date
+uptime
+df -h
+
+Create file - shell file - all commands - run the shell
+.sh
+
+
+Most Important DevOps Tools;
+AWS & Azure
+Linux
+Shell Scripting / Python Scripting
+Git and GitHub
+Maven
+Nexus / JFrog
+Jenkins******
+SonarQube
+Docker******
+Kubernetes******
+ArgoCD
+Ansible
+Terraform******
+Prometheus, Grafana, ELK/EFK stack
+----------------------------------------------------------------------------
+GitHub Actions
+GitLab
+Azure Cloud
+Azure DevOps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
