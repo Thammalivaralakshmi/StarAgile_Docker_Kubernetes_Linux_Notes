@@ -12,6 +12,9 @@
 | 🔢 | Tool                     | Description                                                                 |
 |----|--------------------------|-----------------------------------------------------------------------------|
 | 1️⃣ | **Linux & Shell Scripting** | Basics to Advanced scripting techniques — [🎥 Watch Lectures](https://www.youtube.com/playlist?list=PLs-PsDpuAuTeT2iRQpNs0sl-sXFD10I1C) |
+| 2️⃣ | **Docker** | Images, Containers, Volumes, Networks, Docker Compose, Docker Swarm, 2 Projects |
+| 3️⃣ | **Kubernetes** | K8s Architecture, Workloads, Services, K8s Controllers, Volumes, StatefulSet, Ingress Controller, ArgoCD |
+| 4️⃣ | **Ansible** | Configuration Management, AdHoc Commands, Playbooks, Roles, Modules |
 
 
 ---
