@@ -1,0 +1,161 @@
+Docker_Day 02
+===================
+sudo yum install -y docker
+sudo service docker start
+sudo systemctl enable docker.service
+docker --version
+
+Dockerfile;
+FROM, RUN, CMD, COPY, ADD, EXPOSE, WORKDIR, ENTRYPOINT
+
+LABEL - it is used to assign the metadata for our image
+FROM ubuntu
+RUN mkdir kastro
+LABEL author Kastro
+
+ENV - using this key-word we can set the environment variables
+FROM ubuntu
+ENV course Docker
+ENV trainer Kastro
+
+EXPOSE - it is used to expose our application in the browser
+FROM ubuntu
+ENV course Docker
+ENV trainer Kastro
+EXPOSE 8080
+
+USER - using this we can set the username for the image or for a container
+USER is a Dockerfile instruction that specifies which Linux user the container should run as
+By default, all the docker images run as root user, which has all privileges
+To delete all the unused images and containers;
+docker system prune -a
+FROM ubuntu:22.04
+RUN mkdir /data
+RUN useradd -m appuser
+RUN chown -R appuser /data
+USER appuser
+CMD ["bash", "-c", "echo 'hello' > /data/hello.txt && tail -f /dev/null"]
+
+MAINTAINER - it represents the author/maintainer of the dockerfile
+FROM ubuntu:22.04
+RUN mkdir /data
+RUN useradd -m appuser
+RUN chown -R appuser /data
+USER appuser
+CMD ["bash", "-c", "echo 'hello' > /data/hello.txt && tail -f /dev/null"]
+MAINTAINER kastro kastro@gmail.com
+
+======================
+DOCKER VOLUMES
+======================
+Volume is nothing but a storage for container
+It is a directory inside a container
+An EBS Volume can also be attached to the Docker Container
+We can attach morethan 1 volume to a single container
+We can attach multiple volumes to a single container
+We can also share same volume with multiple containers
+
+Case 1: Creation of Volumes using Dockerfile & Understanding Data Replication
+
+Case 2: Sharing the volume b/w containers
+
+Case 3: Creating volumes using command
+
+Case 4: Create a volume on the host machine and attach it to a new/existing container
+
+=====================
+Push and Pull the Images
+=====================
+
+=====================
+Project 1: Deploying HTML App
+=====================
+https://github.com/KastroVKiran/ECR-ECS-Project.git
+
+By default html applications will run on port number 80
+
+Dockerfile;
+FROM ubuntu
+RUN apt update -y
+RUN apt install apache2 -y
+RUN apt install apache2-utils -y
+COPY ECR-ECS-Project//var/www/html/
+RUN service apache2 restart
+EXPOSE 80
+CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
+
+Dockerfile;
+FROM nginx:latest
+COPY . /usr/share/nginx/html/
+EXPOSE 80
+
+=====================
+Port Mapping
+=====================
+
+
+======================
+Multi-stage Dockerfile
+======================
+Compiled Language Vs Interpreted Languages
+
+To reduce the size of the images, we will use Multi-stage Dockerfile
+
+Pizza Shop ----> Ordered ----> Pizza (kitchen, crockery....)
+
+Docker Images ----> App (Dependencies)
+
+FROM, RUN, COPY, ADD ---> increases the size of the image
+
+A multi-stage dockerfile is a dockerfile that uses multiple FROM instructions to define multiple build stages. Each stage can have its own base image, dependencies, libraries...
+Stage 1: Build Stage	---> Artifact, Dependencies....
+Stage 2: RUN Stage
+
+✔ vi main.go ----> Paste the below code;
+
+package main
+
+import (
+    "fmt"
+    "net/http"
+)
+
+func main() {
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        fmt.Fprintf(w, "Hello World from Go Web App!")
+    })
+
+    fmt.Println("Server running on port 8080")
+    http.ListenAndServe(":8080", nil)
+}
+
+#Stage1: build stage
+FROM golang:1.21 AS builder
+WORKDIR /app
+COPY . .
+RUN CGO_ENABLED=0 GOOS=Linux go build -o hello main.go
+#Stage2: runtime stage
+FROM alpine:3.19
+WORKDIR /app
+COPY --from=builder /app/hello .
+EXPOSE 8080
+CMD ["./hello"]
+
+docker run -d --name go-app-single -p 8085:8080 go-single
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
