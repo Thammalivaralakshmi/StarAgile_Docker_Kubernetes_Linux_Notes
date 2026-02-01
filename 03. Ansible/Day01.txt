@@ -1,0 +1,178 @@
+Ansible_Day 01
+===================
+Jenkins --- CI & CD tool
+Docker --- Containerization tool
+Kubernetes --- Container Orchestration tool
+
+Ansible - Configuration Management tool or IT Automation tool
+Other configuration management tools such as chef, puppet...
+
+Terraform - is used to automate the infrastructure creation
+Ansible - it used to configure the infrastructure 
+
+Ansible is free and open source
+It is invented by Michael Dehaan (2012-2013)
+RedHat is currently managing Ansible
+
+Ansible Installation on Master Node
+sudo dnf install python3-pip -y
+pip install ansible
+ansible --version
+
+Setting up the host inventory file
+Note: By default, in the latest versions we will not have host inventory file in /etc/ansible/hosts path. We need to explicitly create this path and also the inventory file
+
+Step 1 — Create /etc/ansible/ directory
+sudo mkdir -p /etc/ansible
+
+Step 2 — Create a config file
+sudo nano /etc/ansible/ansible.cfg
+
+Paste this minimal configuration:
+[defaults]
+inventory=/etc/ansible/hosts
+host_key_checking=False
+
+Save & exit.
+
+Step 3 — Create the hosts inventory file
+sudo nano /etc/ansible/hosts
+
+Add your hosts:
+[dev-servers]
+your-ec2-private-ip-here
+
+[test-servers]
+your-ec2-private-ip-here
+
+Save & exit.
+
+To verify the connection ----> ansible all -m ping ---> You should see the response from all the 4 worker nodes as "pong"
+
+ansible all --list-hosts
+ansible-inventory --list
+
+[dev-server]
+172.31.10.218
+
+[test-server]
+172.31.12.98
+
+Commands executed so far;
+    1  amazon-linux-extras install ansible2 -y
+    2  sudo dnf install python3-pip -y
+    3  pip install ansible
+    4  ansible --version
+    5  clear
+    6  vi /etc/ssh/sshd_config
+    7  systemctl restart sshd
+    8  systemctl status sshd
+    9  ssh-keygen
+   10  ssh-copy-id root@172.31.10.218
+   11  clear
+   12  passwd root
+   13  ssh-copy-id root@172.31.10.218
+   14  ssh 172.31.10.218
+   15  clear
+   16  ssh-copy-id root@172.31.12.98
+   17  ssh 172.31.12.98
+   18  clear
+   19  vi /etc/ansible/hosts
+   20  sudo mkdir -p /etc/ansible
+   21  sudo nano /etc/ansible/ansible.cfg
+   22  sudo nano /etc/ansible/hosts
+   23  ansible all -m ping
+   24  ansible dev-server --list-hosts
+   25  ansible test-server --list-hosts
+   26  ansible all --list-hosts
+   27  ansible test-servers --list-hosts
+
+
+=> Working with Ansible;
+3 ways of working with ansible;
+1. Adhoc Commands
+
+Practice Commands;
+https://chatgpt.com/share/697cd30c-6b30-8002-9297-849f73b75404
+
+    3  ansible all -a "yum install git -y"
+    4  clear
+    5  ansible dev-server -a "yum install maven -y"
+    6  ansible all -a "useradd kastro"
+    7  ansible all -a "cat /etc/passwd"
+    8  git -v
+    9  mvn -v
+   10  cat /etc/passwd
+   11  ansible dev-server -a "yum remove maven* -y"
+   12  ansible all -a "yum remove git* -y"
+   13  ansible all -a "touch file1.txt"
+   14  ansible all -a "mkdir ansible-day01"
+
+
+2. Modules
+3. Playbooks
+
+=> Ansible Modules
+These will work based on key-value pairs
+
+"yum" - module name
+"user" - module name
+
+States;
+yum modules;
+install = present
+uninstall = absent
+update = latest
+
+service modules;
+start = started
+stop = stopped
+restart a service = restarted
+enable a service = enabled
+
+ansible all -m yum -a "name=git state=present"
+   17  ansible all -m yum -a "name=docker state=present"
+   18  ansible all -m yum -a "name=httpd state=present"
+   19  ansible all -a "httpd -v"
+   20  ansible all -m yum -a "name=docker state=absent"
+   21  ansible all -a "systemctl status httpd"
+   22  ansible all -m service -a "name=httpd state=started"
+   23  ansible all -a "systemctl status httpd"
+   24  ansible all -m service -a "name=httpd state=status"
+   25  ansible all -m service -a "name=httpd state=state"
+   26  ansible all -m user -a "name=salman state=present"
+   27  ansible all -a "cat /etc/password"
+   28  ansible all -a "cat /etc/passwd"
+   29  touch ansible.py
+   30  ls
+   31  ansible all -m copy -a "src=ansible.py dest=/root"
+   32  ansible all -a "ll /root"
+   33  ansible all -a "ls /root"
+   34  ansible all -a "ls /tmp"
+   35  ansible all -a "ls /bin"
+
+Task: Execute the commands available in the below for practicing MODULES concept
+https://chatgpt.com/share/697cd30c-6b30-8002-9297-849f73b75404
+
+=> Ansible Playbooks
+A playbook contains task(s)
+
+Playbooks in ansible will be written in YAML format
+YAML file starts with --- and ends with ... (optional)
+.yml or .yaml
+Playbook is case sensitive and indentations are very important
+
+At the beginning of any playbook, it is recommended to write the description (-name:<Description of playbook>)
+
+
+
+
+
+
+
+
+
+
+
+
+

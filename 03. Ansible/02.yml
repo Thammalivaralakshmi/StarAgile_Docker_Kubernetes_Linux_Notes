@@ -1,0 +1,13 @@
+---
+- name: installation of apache
+  hosts: all
+  become: yes
+  tasks:
+    - name: installation of apache webserver
+      yum:
+        name: httpd
+        state: present
+    - name: print a message
+      debug: #debug is the module name to print a message
+        msg: "Apache is successfull installed"
+...
