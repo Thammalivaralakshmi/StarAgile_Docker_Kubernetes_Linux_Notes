@@ -40,7 +40,7 @@ sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
 
 => Creation of Cluster
-eksctl create cluster --name kastro-cluster --region ap-south-1 --node-type t2.medium  --zones ap-south-1a,ap-south-1b
+eksctl create cluster --name kastro-cluster --region ap-south-1 --node-type t3.small  --zones ap-south-1a,ap-south-1b
 
 The above commands uses some default values;
 It creates 2 worker nodes
@@ -154,6 +154,7 @@ By default Kubernetes will allocate a port number to the app running inside the 
 NodePort will range in between 30000 to 32767
 
 Note: If you dont give node port number in the manifest file, by default Kubernetes will allocate the node port number with in the range of 30000 to 32767
+
 
 
 
