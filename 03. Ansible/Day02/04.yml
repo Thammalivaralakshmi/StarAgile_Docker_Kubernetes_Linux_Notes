@@ -1,0 +1,21 @@
+- name: TAGS Playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: installation of git
+      yum: 
+        name: git
+        state: present
+      tags: git #tag can be with any name
+
+    - name: installation of maven
+      yum:
+        name: maven
+        state: present
+      tags: maven
+
+    - name: creation of user
+      user:
+        name: devika
+        state: present
+      tags: user

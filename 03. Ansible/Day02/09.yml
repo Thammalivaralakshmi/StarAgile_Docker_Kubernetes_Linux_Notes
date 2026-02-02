@@ -1,0 +1,11 @@
+- name: notify and handlers playbook
+  hosts: all
+  become: yes
+  tasks:  
+    - name: installing apache
+      yum: name=httpd state=present
+      notify: Starting Apache
+
+  handlers:
+    - name: Starting Apache
+      service: name=httpd state=started
