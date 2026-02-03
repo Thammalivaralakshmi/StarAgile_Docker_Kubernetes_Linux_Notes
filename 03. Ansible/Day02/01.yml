@@ -1,0 +1,42 @@
+- name: Apache Installation and Configuration Playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: Installing Apache
+      yum:
+        name: httpd
+        state: present
+    
+    - name: Print Message
+      debug: 
+        msg: "Apache installed"
+
+    - name: Starting Apache
+      service:
+        name: httpd
+        state: started
+
+    - name: Installing GIT
+      yum:
+        name: git
+        state: present
+
+    - name: Installing Docker
+      yum:
+        name: docker
+        state: present
+
+    - name: Starting Docker
+      service:
+        name: docker
+        state: started
+
+    - name: Copying the Files
+      copy:
+        src: kastro.java
+        dest: /home/ec2-user
+
+    - name: Creating an User
+      user:
+        name: ramesh
+        state: present
