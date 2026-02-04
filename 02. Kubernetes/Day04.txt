@@ -220,7 +220,7 @@ aws iam create-policy \
 
 The name of the policy which we have created is "AWSLoadBalancerControllerIAMPolicy"
 The same policy will be created in IAM console. Goto IAM console and verify. Copy the ARN of the policy created.
-Ex: "Arn": "arn:aws:iam::560185625463:policy/AWSLoadBalancerControllerIAMPolicy"
+Ex: "Arn": "arn:aws:iam::810507735939:policy/AWSLoadBalancerControllerIAMPolicy"
 
 3.2 – Create the IAM Service Account
 Create the IAM service account for the AWS Load Balancer Controller using eksctl. This command attaches the policy to the service account and (if it exists) overrides the existing service account:
@@ -567,4 +567,5 @@ kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.loadB
 
 TO GET ARGO CD PASSWORD:
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
  
